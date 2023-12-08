@@ -1,0 +1,27 @@
+{{>layouts/header}}
+<form class="container" action="/recipe/create" method="post">
+    <div class="mb-3">
+        <label class="form-label">제목</label>
+            <input type="text" class="form-control" name="recipeName">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">내용</label>
+            <textarea class="form-control" rows="3" name="recipeContent"></textarea>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">recipeCalorie</label>
+        <textarea class="form-control" rows="3" name="recipeCalorie"></textarea>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">recipeCookingTime</label>
+        <textarea class="form-control" rows="3" name="recipeCookingTime"></textarea>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">recipeLevel</label>
+        <textarea class="form-control" rows="3" name="recipeLevel"></textarea>
+    </div>
+
+    <button type="submit">submit</button>
+    <a href="/recipe">Back</a>
+</form>
+{{>layouts/footer}}

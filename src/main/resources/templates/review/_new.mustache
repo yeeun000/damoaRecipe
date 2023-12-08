@@ -1,0 +1,43 @@
+<div class="card m-2" id="review-new">
+    <div class="card-body">
+        <form>
+            <div class="mb-3">
+                <label class="form-label">{{#reviewForm}}{{reviewAuthorId}}{{/reviewForm}}</label>
+                <input type="hidden" id="hidden-review-reviewAuthorId" value="{{#reviewForm}}{{reviewAuthorId}}{{/reviewForm}}">
+            </div>
+            <div class="mb-3">
+                <label class="form-lavel">댓글 내용</label>
+                <textarea type="text" class="form-control" rows="3" id="new-review-reviewContent"></textarea>
+            </div>
+            {{#recipe}}
+                <input type="hidden" id="new-review-recipe-recipeId" value="{{recipeId}}">
+            {{/recipe}}
+            <button type="button" class="btn btn-primary" id="review-create-btn">댓글 작성</button>
+        </form>
+    </div>
+</div>
+<script>
+    {
+    const reviewCreateBtn =document.querySelector("#review-create-btn");
+    reviewCreateBtn.addEventListener("click",function(){
+        const review={
+            reviewAuthorId: document.querySelector("#hidden-review-reviewAuthorId").value,
+            reviewContent: document.querySelector("#new-review-reviewContent").value,
+            recipeId: document.querySelector("#new-review-recipe-recipeId").value
+        };
+        console.log(review);
+        const url="/api/recipe/"+review.recipeId+"/review";
+        fetch(url, {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(review)
+        }).then(response=>{
+            const msg=(response.ok)?"댓글이 등록됐습니다.":"댓글 등록 실패..!";
+            alert(msg);
+            window.location.reload();
+        })
+    });
+    }
+</script>

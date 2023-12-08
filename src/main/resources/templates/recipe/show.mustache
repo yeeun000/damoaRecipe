@@ -1,0 +1,37 @@
+{{>layouts/header}}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">recipeAuthorId</th>
+        <th scope="col">recipeName</th>
+        <th scope="col">recipeContent</th>
+        <th scope="col">recipeCalorie</th>
+        <th scope="col">recipeCookingTime</th>
+        <th scope="col">recipeLevel</th>
+        <th scope="col">recipeLike</th>
+        <th scope="col">recipeCreatedAt</th>
+        <th scope="col">recipeUpdatedAt</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#recipe}}
+    <tr>
+        <th>{{recipeAuthorId}}</th>
+        <td>{{recipeName}}</td>
+        <td>{{recipeContent}}</td>
+        <td>{{recipeCalorie}}</td>
+        <td>{{recipeCookingTime}}</td>
+        <td>{{recipeLevel}}</td>
+        <td>{{recipeLike}}</td>
+        <td>{{recipeCreatedAt}}</td>
+        <td>{{recipeUpdatedAt}}</td>
+    </tr>
+    {{/recipe}}
+    </tbody>
+</table>
+<a href="/recipe/{{recipe.recipeId}}/edit" class="btn btn-primary">Edit</a>
+<a href="/recipe/{{recipe.recipeId}}/delete" class="btn btn-danger">Delete</a>
+<a href="/recipe/{{recipe.recipeId}}/like" class="btn btn-like">like</a>
+<a href="/recipe">Go to Recipe List</a>
+{{>review/_review}}
+{{>layouts/footer}}

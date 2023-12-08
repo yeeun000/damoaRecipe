@@ -1,0 +1,31 @@
+{{>layouts/header}}
+{{#recipe}}
+<form class="container" action="/recipe/{{recipeId}}/update">
+    <input name="id" type="hidden" value="{{recipeId}}">
+    <div class="mb-3">
+        <label class="form-label">제목</label>
+        <input type="text" class="form-control" name="recipeName" value="{{recipeName}}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">내용</label>
+        <textarea class="form-control" rows="3" name="recipeContent">{{recipeContent}}</textarea>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">recipeCalorie</label>
+        <textarea class="form-control" rows="3" name="recipeCalorie">{{recipeCalorie}}</textarea>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">recipeCookingTime</label>
+        <textarea class="form-control" rows="3" name="recipeCookingTime">{{recipeCookingTime}}</textarea>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">recipeLevel</label>
+        <textarea class="form-control" rows="3" name="recipeLevel">{{recipeLevel}}</textarea>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">submit</button>
+    <a href="/recipe/{{recipe.recipeId}}">Back</a>
+</form>
+{{/recipe}}
+{{>layouts/footer}}
