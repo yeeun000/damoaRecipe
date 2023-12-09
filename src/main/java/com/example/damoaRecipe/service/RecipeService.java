@@ -69,16 +69,9 @@ public class RecipeService {
         return recipeList;
     }
 
-//    public List<Recipe> getRecipesByCategoryId(Long categoryId, int page, int size) {
-//        // 페이징 처리
-//        PageRequest pageable = PageRequest.of(page, size);
-//
-//        // RecipeRepository에서 특정 카테고리에 속한 레시피를 페이징하여 가져오는 메서드 호출
-//        return recipeRepository.findByCategoryId(categoryId, pageable);
-//    }
-//public List<Recipe> getTopRecipesByLikes(int count) {
-//    Pageable pageable = PageRequest.of(0, count);
-//    return recipeRepository.findAllByOrderByRecipeLikeDesc(pageable);
-//}
+public List<Recipe> getTopRecipesByLikes(int count) {
+    Pageable pageable = PageRequest.of(0, count);
+    return recipeRepository.findAllByOrderByRecipeLikeDesc(pageable);
+}
 
 }

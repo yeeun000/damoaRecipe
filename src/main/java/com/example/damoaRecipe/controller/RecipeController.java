@@ -26,6 +26,9 @@ import java.util.Optional;
 public class RecipeController {
     @Autowired
     private RecipeRepository recipeRepository;
+    @Autowired
+    private RecipeService recipeService;
+
 
     @Autowired
     private ReviewService reviewService;
@@ -70,7 +73,9 @@ public class RecipeController {
     @GetMapping("/recipe") //모든 레시피의 목록을 보여줌
     public String index(Model model){
         ArrayList<Recipe> recipeEntityList = recipeRepository.findAll(); //데이터베이스에서 모든 레시피를 조회
-        model.addAttribute("recipeList",recipeEntityList); //조회돈 레시피 목록을 뷰에 전달
+        model.addAttribute("recipeList",recipeEntityList); //조회된 레시피 목록을 뷰에 전달
+        List<Recipe> top3LikesRecipes = recipeService.getTopRecipesByLikes(3); // 상위 3개의 레시피 가져오기
+        model.addAttribute("top3LikesRecipes", top3LikesRecipes);
         return "recipe/index"; //레시피 목록을 표시
     }
 
@@ -109,12 +114,7 @@ public class RecipeController {
         }
         return "redirect:/recipe";
     }
-//    @GetMapping("/top-recipes")
-//    public String topRecipes(Model model) {
-//        List<Recipe> topRecipes = recipeService.getTopRecipesByLikes(3); // 상위 3개의 레시피 가져오기
-//        model.addAttribute("topRecipes", topRecipes);
-//        return "recipe/top-recipes";
-//    }
+
 
 
 

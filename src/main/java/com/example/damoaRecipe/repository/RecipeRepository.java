@@ -11,6 +11,5 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
     @Override
     ArrayList<Recipe> findAll(); //모든 레시피를 데이터베이스에서 조회
-   // List<Recipe> findAllByOrderByRecipeLikeDesc(Pageable pageable);
-    //List<Recipe> findByCategoryId(Long categoryId, Pageable pageable);
+    List<Recipe> findAllByOrderByRecipeLikeDesc(Pageable pageable);
 }
