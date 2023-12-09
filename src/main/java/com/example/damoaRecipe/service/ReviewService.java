@@ -31,14 +31,6 @@ public class ReviewService{
     }
 
     public List<ReviewForm> review(Long recipeId) { //특정 레시피에 대한 리뷰를 조회
-      /*  List<Review> review=reviewRepository.findByRecipeId(recipeId);
-        List<ReviewForm> dtos=new ArrayList<ReviewForm>();
-        for(int i=0;i<review.size();i++){
-            Review c=review.get(i);
-            ReviewForm dto=ReviewForm.createReviewForm(c);
-            dtos.add(dto);
-        }
-        */
         return reviewRepository.findByRecipeId(recipeId).stream().map(review->ReviewForm.createReviewForm(review))
                 .collect(Collectors.toList()); //특정 레시피 ID에 해당하는 리뷰 검색, 수집
     }

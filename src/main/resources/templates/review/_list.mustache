@@ -10,6 +10,7 @@
                         data-bs-reviewId="{{reviewId}}"
                         data-bs-reviewAuthorId="{{reviewAuthorId}}"
                         data-bs-reviewContent="{{reviewContent}}"
+                        data-bs-reviewRating="{{reviewRating}}"
                         data-bs-recipe-recipeId="{{recipeId}}">수정</button>
                 <button type="button" class="btn btn-sm btn-outline-danger review-delete-btn" data-review-reviewId="{{reviewId}}">삭제</button>
             </div>
@@ -44,6 +45,10 @@
                         <label class="form-label">댓글 내용</label>
                         <textarea type="text" class="form-control" rows="3" id="edit-review-reviewContent"></textarea>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">별점</label>
+                        <input type="number" class="form-control" id="edit-review-reviewRating"></input>
+                    </div>
                     <input type="hidden" id="edit-review-reviewId">
                     <input type="hidden" id="edit-review-recipe-recipeId">
                     <button type="button" class="btn btn-primary" id="review-update-btn">수정완료</button>
@@ -60,9 +65,11 @@
         const reviewId = triggerBtn.getAttribute("data-bs-reviewId");
         const reviewAuthorId = triggerBtn.getAttribute("data-bs-reviewAuthorId");
         const reviewContent = triggerBtn.getAttribute("data-bs-reviewContent");
+        const reviewRating = triggerBtn.getAttribute("data-bs-reviewRating");
         const recipeId = triggerBtn.getAttribute("data-bs-recipe-recipeId");
         document.querySelector("#edit-review-reviewAuthorId").value = reviewAuthorId;
         document.querySelector("#edit-review-reviewContent").value = reviewContent;
+        document.querySelector("#edit-review-reviewRating").value = reviewRating;
         document.querySelector("#edit-review-reviewId").value = reviewId;
         document.querySelector("#edit-review-recipe-recipeId").value = recipeId;
     });
@@ -75,6 +82,7 @@
             reviewId: document.querySelector("#edit-review-reviewId").value,
             reviewAuthorId: document.querySelector("#edit-review-reviewAuthorId").value,
             reviewContent: document.querySelector("#edit-review-reviewContent").value,
+            reviewRating: document.querySelector("#edit-review-reviewRating").value,
             recipeId: document.querySelector("#edit-review-recipe-recipeId").value
         };
         console.log(review);

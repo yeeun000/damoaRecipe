@@ -51,17 +51,6 @@ public class RecipeController {
         Recipe saved=recipeRepository.save(recipe1); //번경된 레시피를 데이터베이스에 저장
         return "redirect:/recipe/"+saved.getRecipeId(); //저장된 레시피의 ID를 이용해 해당 레시피의 상세 페이지로 리다이렉트
 
-        /*
-        if (recipe.isPresent()) {
-            Recipe recipe1 = recipe.get();
-            recipe1.recipeLike();
-            Recipe saved = recipeRepository.save(recipe1);
-            return "redirect:/recipe/" + saved.getRecipeId();
-        } else {
-            // 해당 ID의 레시피가 존재하지 않을 경우 처리 (예: 에러 메시지 출력 또는 리다이렉트)
-            // 예: return "redirect:/error";
-            return "redirect:/recipe"; // 혹은 다른 적절한 경로로 리다이렉트
-        }*/
     }
 
 
@@ -94,12 +83,6 @@ public class RecipeController {
         log.info(form.toString());
         Recipe recipeEntity=form.toEntity();  //RecipeForm을 레시피 엔터티(Recipe)로 변환
         log.info(recipeEntity.toString());
-//        if (recipeEntity.getRecipeId() == null) {
-//            Recipe saved = recipeRepository.save(recipeEntity);
-//            return "redirect:/recipe/" + saved.getRecipeId();
-//        }
-
-        // 아니면 기존 레시피 업데이트
         Recipe target = recipeRepository.findById(recipeId).orElse(null);
         if (target != null) {
             target.patch(recipeEntity);
@@ -107,15 +90,7 @@ public class RecipeController {
         }
 
         return "redirect:/recipe/" + recipeEntity.getRecipeId();
-        /*
-        Recipe target=recipeRepository.findById(recipeEntity.getRecipeId()).orElse(null); //변환된 레시피의 ID를 사용하여 데이터베이스에서 해당 레시피를 찾음
 
-        if(target!=null){
-            recipeRepository.save(recipeEntity);
-        }
-
-        return "redirect:/recipe/"+recipeEntity.getRecipeId(); //저장된 레시피의 ID를 이용해 해당 레시피의 상세 페이지로 리다이렉트
-    */
     }
 
 

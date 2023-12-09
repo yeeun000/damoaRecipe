@@ -57,5 +57,6 @@ public class Review{
         if(this.reviewId!=form.getReviewId()) throw new IllegalArgumentException("댓글 수정 실패! 잘못된 id가 입력됐습니다.");
         if(form.getReviewAuthorId() != null) this.reviewAuthorId = form.getReviewAuthorId() ;
         if(form.getReviewContent() != null) this.reviewContent=form.getReviewContent();
+        if(form.getReviewRating() != null) this.reviewRating=form.getReviewRating();
     }
 }

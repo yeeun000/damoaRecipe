@@ -9,6 +9,10 @@
                 <label class="form-lavel">댓글 내용</label>
                 <textarea type="text" class="form-control" rows="3" id="new-review-reviewContent"></textarea>
             </div>
+            <div class="mb-3">
+                <label class="form-lavel">별점</label>
+                <input type="number" class="form-control" rows="3" id="new-review-reviewRating"></textarea>
+            </div>
             {{#recipe}}
                 <input type="hidden" id="new-review-recipe-recipeId" value="{{recipeId}}">
             {{/recipe}}
@@ -23,6 +27,7 @@
         const review={
             reviewAuthorId: document.querySelector("#hidden-review-reviewAuthorId").value,
             reviewContent: document.querySelector("#new-review-reviewContent").value,
+            reviewRating: document.querySelector("#new-review-reviewRating").value,
             recipeId: document.querySelector("#new-review-recipe-recipeId").value
         };
         console.log(review);
