@@ -4,9 +4,12 @@ import com.example.damoaRecipe.entity.Recipe;
 import com.example.damoaRecipe.form.RecipeForm;
 import com.example.damoaRecipe.form.ReviewForm;
 import com.example.damoaRecipe.repository.RecipeRepository;
+import com.example.damoaRecipe.service.RecipeService;
 import com.example.damoaRecipe.service.ReviewService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -106,5 +109,13 @@ public class RecipeController {
         }
         return "redirect:/recipe";
     }
+//    @GetMapping("/top-recipes")
+//    public String topRecipes(Model model) {
+//        List<Recipe> topRecipes = recipeService.getTopRecipesByLikes(3); // 상위 3개의 레시피 가져오기
+//        model.addAttribute("topRecipes", topRecipes);
+//        return "recipe/top-recipes";
+//    }
+
+
 
 }

@@ -6,6 +6,8 @@ import com.example.damoaRecipe.repository.RecipeRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.stream.Collectors;
 public class RecipeService {
     @Autowired
     private RecipeRepository recipeRepository;
+
 
     public RecipeService(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
@@ -65,4 +68,17 @@ public class RecipeService {
         recipeRepository.findById(-1L).orElseThrow(() -> new IllegalArgumentException("결제 실패!")); //레시피 조회, 조회되지 않으면 예외 발생
         return recipeList;
     }
+
+//    public List<Recipe> getRecipesByCategoryId(Long categoryId, int page, int size) {
+//        // 페이징 처리
+//        PageRequest pageable = PageRequest.of(page, size);
+//
+//        // RecipeRepository에서 특정 카테고리에 속한 레시피를 페이징하여 가져오는 메서드 호출
+//        return recipeRepository.findByCategoryId(categoryId, pageable);
+//    }
+//public List<Recipe> getTopRecipesByLikes(int count) {
+//    Pageable pageable = PageRequest.of(0, count);
+//    return recipeRepository.findAllByOrderByRecipeLikeDesc(pageable);
+//}
+
 }

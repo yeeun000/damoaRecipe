@@ -1,5 +1,6 @@
 package com.example.damoaRecipe.form;
 
+//import com.example.damoaRecipe.entity.Category;
 import com.example.damoaRecipe.entity.Recipe;
 import lombok.AllArgsConstructor;
 import lombok.ToString;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @ToString
 public class RecipeForm { //폼 데이터를 받아올 그릇
+  //  private Long categoryId;
     private Long recipeId;//레시피 아이디
     private String recipeAuthorId;//레시피 작성자
     private String recipeName;//레시피 제목
@@ -22,7 +24,10 @@ public class RecipeForm { //폼 데이터를 받아올 그릇
     private Integer recipeStatus;//레시피 상태
 
     public Recipe toEntity() { //엔터티 객체로 변환
+        //Category category = new Category();
+        //category.setCategoryId(categoryId);
         return new Recipe(
+               // category,
                 recipeId,
                 "1",
                 recipeName,

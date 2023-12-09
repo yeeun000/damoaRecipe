@@ -18,6 +18,7 @@ public class RecipeApiController {
     @Autowired
     private RecipeService recipeService;
 
+
     @GetMapping("/api/recipe") //모든 레시피의 목록을 조회
     public List<Recipe> index(){
         return recipeService.index();

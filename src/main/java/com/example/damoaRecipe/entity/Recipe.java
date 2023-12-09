@@ -12,7 +12,10 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 public class Recipe {
-
+    /*@ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+*/
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long recipeId; //레시피 아이디
@@ -52,5 +55,11 @@ public class Recipe {
         if(recipe.recipeLevel != null) this.recipeLevel=recipe.recipeLevel;
         if(recipe.recipeLike != null) this.recipeLike=recipe.recipeLike;
        // if(recipe.recipeImage != null) this.recipeImage=recipe.recipeImage; 이미지 변경사항
+       /* if (recipe.category != null) {
+            if (recipe.category.getCategoryId() != null) {
+                this.category.setCategoryId(recipe.category.getCategoryId());
+            }
+            // Category 엔터티의 다른 필드들도 수정할 경우에 추가로 처리
+        }*/
     }
 }
