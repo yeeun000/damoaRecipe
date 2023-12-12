@@ -1,4 +1,4 @@
-/*
+
 package com.example.damoaRecipe.entity;
 
 import jakarta.persistence.*;
@@ -36,7 +36,7 @@ public class Member {
     @Column(name="member_status")
     private Integer memberStatus;
 
-     레시피랑 리뷰 테이블 완성되면 주석 풀 예정
+
     @OneToMany
     @JoinColumn(name="member_id")
     private List<Recipe> recipes = new ArrayList<>();
@@ -59,4 +59,4 @@ public class Member {
                 '}';
     }
 }
-*/
+

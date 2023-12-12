@@ -5,19 +5,37 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
 @Getter
 public class Recipe {
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-*/
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+     @OneToMany(mappedBy="recipe")
+    private List<Image> image=new ArrayList<>();
+
+     @OneToMany(mappedBy="recipe")
+     private  List<RecipeIngredient> recipeIngredient=new ArrayList<>();
+
+    @OneToMany(mappedBy="recipe")
+    private List<Review> review=new ArrayList<>();
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="recipe_id")
     private Long recipeId; //레시피 아이디
     @Column(name="recipe_author_id")
     private String recipeAuthorId; //레시피 작성자
@@ -47,6 +65,14 @@ public class Recipe {
         recipeLike++;
     }
 
+    public void setCategory(Category category){
+        this.category=category;
+    }
+
+    public void setMember(Member member){
+        this.member=member;
+    }
+
     public void patch(Recipe recipe) { // 수정할 내용이 있는 경우 값을 갱신
         if(recipe.recipeName != null) this.recipeName =recipe.recipeName;
         if(recipe.recipeContent != null) this.recipeContent=recipe.recipeContent;
@@ -55,11 +81,6 @@ public class Recipe {
         if(recipe.recipeLevel != null) this.recipeLevel=recipe.recipeLevel;
         if(recipe.recipeLike != null) this.recipeLike=recipe.recipeLike;
        // if(recipe.recipeImage != null) this.recipeImage=recipe.recipeImage; 이미지 변경사항
-       /* if (recipe.category != null) {
-            if (recipe.category.getCategoryId() != null) {
-                this.category.setCategoryId(recipe.category.getCategoryId());
-            }
-            // Category 엔터티의 다른 필드들도 수정할 경우에 추가로 처리
-        }*/
+
     }
 }

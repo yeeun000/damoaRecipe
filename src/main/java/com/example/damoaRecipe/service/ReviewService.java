@@ -25,7 +25,7 @@ public class ReviewService{
     @Transactional
     public ReviewForm create(Long recipeId, ReviewForm form) { //특정 레시피에 대한 리뷰를 생성
         Recipe recipe=recipeRepository.findById(recipeId).orElseThrow(()->new IllegalArgumentException("댓글 생성 실패!"+"대상 게시글이 없습니다.")); //해당 ID 레시피를 찾음
-        Review review=Review.createReview(form,recipe); //리뷰를 생성
+        Review review=Review.createReview(form,recipe, recipe.getMember()); //리뷰를 생성
         Review created=reviewRepository.save(review);//리뷰를 reviewRepository에 저장
         return ReviewForm.createReviewForm(created); //생성된 Review를 ReviewForm으로 변환하고 반환
     }
